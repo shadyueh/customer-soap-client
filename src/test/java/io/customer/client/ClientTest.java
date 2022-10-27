@@ -5,10 +5,15 @@ import java.math.BigInteger;
 public class ClientTest {
     public static void main(String[] args) {
         CustomerPortService service = new CustomerPortService();
+
+        HeaderHandlerResolver handlerResolver = new HeaderHandlerResolver();
+
+        service.setHandlerResolver(handlerResolver);
+
         CustomerPort port = service.getCustomerPortSoap11();
 
         GetCustomerDetailRequest customerDetailRequest = new GetCustomerDetailRequest();
-        customerDetailRequest.setId(BigInteger.valueOf(1));
+        customerDetailRequest.setId(BigInteger.valueOf(3));
 
         GetCustomerDetailResponse customerDetailResponse = port.getCustomerDetail(customerDetailRequest);
 
